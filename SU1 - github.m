@@ -1,17 +1,18 @@
+cd('Â·Â·Â·');                         %æ›´æ”¹å½“å‰å·¥ä½œåŒºè‡³åŒ…å«å›¾ç‰‡çš„æ–‡ä»¶å¤¹å¤„
 
 clear;
 SE1 = [0,1;0,1];
 SE2 = [1,1;1,1];
 BW1=imread('1.jpg');
 figure(1),
-subplot(2,2,1);imshow(BW1);title('Ô­Í¼Ïñ');
+subplot(2,2,1);imshow(BW1);title('åŸå›¾åƒ');
 BW11=rgb2gray(BW1);
 BW2=edge(BW11,'roberts',0.18,'both');
-subplot(2,2,2);imshow(BW2);title('±ßÔµ»¯´¦ÀíÍ¼Ïñ£¨robertsËã×Ó£©');
+subplot(2,2,2);imshow(BW2);title('è¾¹ç¼˜åŒ–å¤„ç†å›¾åƒï¼ˆrobertsç®—å­ï¼‰');
 BW3=imerode(BW2,SE1); 
-subplot(2,2,3);imshow(BW3);title('¸¯Ê´Í¼Ïñ');
+subplot(2,2,3);imshow(BW3);title('è…èš€å›¾åƒ');
 BW4=imdilate(BW3,SE2); 
-subplot(2,2,4);imshow(BW4);title('ÅòÕÍÍ¼Ïñ');
+subplot(2,2,4);imshow(BW4);title('è†¨èƒ€å›¾åƒ');
 
 
 clear;
@@ -19,7 +20,7 @@ img=imread('2.bmp');
 f=rgb2gray(img);
 figure(2),
 subplot(1,2,1);
-imshow(f); title('Ô­Í¼Ïñ£¨¸ßË¹Ä£ºı£©');
+imshow(f); title('åŸå›¾åƒï¼ˆé«˜æ–¯æ¨¡ç³Šï¼‰');
 f=double(f);  
 f=fft2(f);  
 f=fftshift(f);  
@@ -38,24 +39,24 @@ g=ifftshift(g);
 g=ifft2(g);  
 g=mat2gray(real(g));  
 subplot(1,2,2);  
-imshow(g);title('È¥Ä£ºıÍ¼Ïñ£¨¸ßË¹Æ½»¬ÂË²¨£©');
+imshow(g);title('å»æ¨¡ç³Šå›¾åƒï¼ˆé«˜æ–¯å¹³æ»‘æ»¤æ³¢ï¼‰');
 imwrite(img,'2.jpg');
 
 
 img= imread('3.bmp');
 I = rgb2gray(img);
-K = medfilt2(I);%²ÉÓÃ¶şÎ¬ÖĞÖµÂË²¨º¯Êımedfilt2¶ÔÊÜ½·ÑÎÔëÉù¸ÉÈÅµÄÍ¼ÏñÂË²¨ 
+K = medfilt2(I);%é‡‡ç”¨äºŒç»´ä¸­å€¼æ»¤æ³¢å‡½æ•°medfilt2å¯¹å—æ¤’ç›å™ªå£°å¹²æ‰°çš„å›¾åƒæ»¤æ³¢ 
 figure(3),
 subplot(1,2,1);imshow(I);
-title('Ô­Í¼Ïñ£¨½·ÑÎÔëÉù£©');
+title('åŸå›¾åƒï¼ˆæ¤’ç›å™ªå£°ï¼‰');
 subplot(1,2,2);imshow(K);
-title('È¥Ä£ºıÍ¼Ïñ£¨ÖĞÖµÂË²¨£©');
+title('å»æ¨¡ç³Šå›¾åƒï¼ˆä¸­å€¼æ»¤æ³¢ï¼‰');
 
 
 
 clear
 rgb=imread('4.bmp');
-% ¶ÔRGBÃ¿¸öÍ¨µÀ½øĞĞhisteq´¦Àí
+% å¯¹RGBæ¯ä¸ªé€šé“è¿›è¡Œhisteqå¤„ç†
 r=rgb(:,:,1);
 g=rgb(:,:,2);
 b=rgb(:,:,3);
@@ -63,56 +64,56 @@ R=histeq(r);
 G=histeq(g);
 B=histeq(b);
 result_rgb=cat(3,R,G,B);
-% ½á¹ûÏÔÊ¾
+% ç»“æœæ˜¾ç¤º
 figure(4),
-subplot(1,2,1),imshow(rgb),title('Ô­Í¼Ïñ£¨Îí£©')
-subplot(1,2,2),imshow(result_rgb),title('È¥Ä£ºıÍ¼Ïñ£¨histeq:Ö±·½Í¼¾ùºâ»¯£©£º')
+subplot(1,2,1),imshow(rgb),title('åŸå›¾åƒï¼ˆé›¾ï¼‰')
+subplot(1,2,2),imshow(result_rgb),title('å»æ¨¡ç³Šå›¾åƒï¼ˆhisteq:ç›´æ–¹å›¾å‡è¡¡åŒ–ï¼‰ï¼š')
 
 
-H=imread('5.bmp');%¶ÁÈ¡Í¼Ïñ¡¡¡¡¡¡
-I=rgb2gray(H);%½«²ÊÉ«Í¼Ïñ×ª»»Îª»Ò¶ÈÍ¼Ïñ
+H=imread('5.bmp');%è¯»å–å›¾åƒã€€ã€€ã€€
+I=rgb2gray(H);%å°†å½©è‰²å›¾åƒè½¬æ¢ä¸ºç°åº¦å›¾åƒ
 figure(5),
 subplot(2,2,1);
-imshow(I);%ÏÔÊ¾Í¼Ïñ¡¡¡¡
-title('Ô­Í¼Ïñ£¨ĞèÍ¼ÏñÔöÇ¿£©');
+imshow(I);%æ˜¾ç¤ºå›¾åƒã€€ã€€
+title('åŸå›¾åƒï¼ˆéœ€å›¾åƒå¢å¼ºï¼‰');
 subplot(2,2,3);
-imhist(I);%»æÖÆÍ¼ÏñµÄ»Ò¶ÈÖ±·½Í¼¡¡¡¡¡¡
-title('Ô­Í¼µÄ»Ò¶ÈÖ±·½Í¼');
+imhist(I);%ç»˜åˆ¶å›¾åƒçš„ç°åº¦ç›´æ–¹å›¾ã€€ã€€ã€€
+title('åŸå›¾çš„ç°åº¦ç›´æ–¹å›¾');
 axis('auto');
 subplot(2,2,2);
-J=histeq(I,64);%¶ÔÍ¼Ïñ½øĞĞ¾ùºâ»¯´¦Àí£¬·µ»ØÓĞ64¼¶»Ò¶ÈµÄÍ¼ÏñJ¡¡¡¡¡¡
-imshow(J);%ÏÔÊ¾Í¼Ïñ¡¡¡¡¡¡
-title('È¥Ä£ºıÍ¼Ïñ£¨Ö±·½Í¼¾ùºâ»¯£©');
+J=histeq(I,64);%å¯¹å›¾åƒè¿›è¡Œå‡è¡¡åŒ–å¤„ç†ï¼Œè¿”å›æœ‰64çº§ç°åº¦çš„å›¾åƒJã€€ã€€ã€€
+imshow(J);%æ˜¾ç¤ºå›¾åƒã€€ã€€ã€€
+title('å»æ¨¡ç³Šå›¾åƒï¼ˆç›´æ–¹å›¾å‡è¡¡åŒ–ï¼‰');
 subplot(2,2,4);
-imhist(J);%»æÖÆÍ¼ÏñµÄ»Ò¶ÈÖ±·½Í¼¡¡¡¡
-title('¾ùºâºóµÄ»Ò¶ÈÖ±·½Í¼');
+imhist(J);%ç»˜åˆ¶å›¾åƒçš„ç°åº¦ç›´æ–¹å›¾ã€€ã€€
+title('å‡è¡¡åçš„ç°åº¦ç›´æ–¹å›¾');
 
 
 Image=imread('6.jpg');  
 [M,N,nDims]=size(Image);
-Image=im2double(Image);% »ñÈ¡Í¼ÏñµÄ³ß´çºÍ²¨¶ÎÊı
+Image=im2double(Image);% è·å–å›¾åƒçš„å°ºå¯¸å’Œæ³¢æ®µæ•°
 ImageStretch=Image;
-for i=1:nDims  % ¶ÔÃ¿¸ö²¨¶ÎÒÀ´Î½øĞĞ»Ò¶ÈÀ­Éì
+for i=1:nDims  % å¯¹æ¯ä¸ªæ³¢æ®µä¾æ¬¡è¿›è¡Œç°åº¦æ‹‰ä¼¸
     Sp=Image(:,:,i);
     MaxDN=max(max(Sp));
     MinDN=min(min(Sp));
-    Sp=(Sp-MinDN)/(MaxDN-MinDN);  % »Ò¶ÈÀ­Éì¹«Ê½
+    Sp=(Sp-MinDN)/(MaxDN-MinDN);  % ç°åº¦æ‹‰ä¼¸å…¬å¼
     ImageStretch(:,:,i)=Sp;
 end
 figure(6),
-subplot(1,2,1),imshow(Image);title('Ô­Í¼Ïñ£¨Ğè¶Ô±È¶ÈÀ­Éì£©');
-subplot(1,2,2),imshow(ImageStretch);title('È¥Ä£ºıÍ¼Ïñ£¨»Ò¶ÈÀ­Éì£©');
+subplot(1,2,1),imshow(Image);title('åŸå›¾åƒï¼ˆéœ€å¯¹æ¯”åº¦æ‹‰ä¼¸ï¼‰');
+subplot(1,2,2),imshow(ImageStretch);title('å»æ¨¡ç³Šå›¾åƒï¼ˆç°åº¦æ‹‰ä¼¸ï¼‰');
 
 
 I = im2double(imread('7.tif'));
 figure(7),
 subplot(1,2,1),imshow(I);
-title('Ô­Í¼Ïñ£¨ÔË¶¯Ä£ºı£©');
+title('åŸå›¾åƒï¼ˆè¿åŠ¨æ¨¡ç³Šï¼‰');
 LEN = 8;
 THETA = 0;
 PSF = fspecial('motion', LEN, THETA);
 wnr1 = deconvwnr(I, PSF, 0);
 subplot(1,2,2),imshow(wnr1);
-title('È¥Ä£ºıÍ¼Ïñ£¨Î¬ÄÉÂË²¨£©')
+title('å»æ¨¡ç³Šå›¾åƒï¼ˆç»´çº³æ»¤æ³¢ï¼‰')
 
 
